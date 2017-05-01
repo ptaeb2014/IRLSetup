@@ -113,10 +113,6 @@ date <- format(Sys.Date() - days(1), '%Y%m%d')
 fcst.time <- as.POSIXct(Sys.Date() - days(1) + hours(18), tz = 'GMT')
 run <- '18'
 
-# model level and variables to grab
-level <- '10_m_above_ground'
-vars <- c('UGRD', 'VGRD')
-
 # dataframe to store final information
 df.run <- data.frame(runtime = rep(fcst.time, 28), 
                      fcsthour = seq(0, 81, by = 3))
