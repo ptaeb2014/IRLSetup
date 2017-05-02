@@ -109,10 +109,8 @@ ens.mems <- c('gec00', 'gep01', 'gep02', 'gep03', 'gep04', 'gep05', 'gep06',
               'gep14', 'gep15', 'gep16', 'gep17', 'gep18', 'gep19', 'gep20')
 
 # date/run to grab data (yesterday, 18z)
-# date <- format(Sys.Date() - days(1), '%Y%m%d')
-# fcst.time <- as.POSIXct(Sys.Date() - days(1) + hours(18), tz = 'GMT')
-date <- format(Sys.Date() - days(5), '%Y%m%d')
-fcst.time <- as.POSIXct(Sys.Date() - days(5) + hours(18), tz = 'GMT')
+date <- format(Sys.Date() - days(1), '%Y%m%d')
+fcst.time <- as.POSIXct(Sys.Date() - days(1) + hours(18), tz = 'GMT')
 run <- '18'
 
 # dataframe to store final information
