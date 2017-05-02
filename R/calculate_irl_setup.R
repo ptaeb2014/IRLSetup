@@ -118,6 +118,7 @@ for (ens.mem in ens.mems) {
     
     # now calculate the lagoon relative wind
     u.r <- -1 * (u1 * 28 + u2 * 70) / (28 + 70)
+    # u.r <- (u1 * 28 + u2 * 70) / (28 + 70)
     
     # calculate setup and add it to df.setup
     df.setup[[paste(ens.mem, 'raw', sep = '.')]] <- 0.728 * sign(u.r) * 
