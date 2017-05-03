@@ -1,4 +1,7 @@
-# IRLSetup
+## Current Forecast
+Valid 2017-05-02 20:45:52 EDT
+![Current Raw Forecast](img/raw_setup.png)
+
 Operational, ensemble-based, probabilistic wave setup forecasting for the [Indian River Lagoon (IRL)](https://en.wikipedia.org/wiki/Indian_River_Lagoon).
 
 ## About the IRL
