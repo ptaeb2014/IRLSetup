@@ -16,11 +16,20 @@ df.test$med.raw <- apply(df.test[-c(1, 23)], 1, median)
 p <- ggplot(df.test, aes(x = validtime)) + 
     geom_line(data = df.setup.melt, mapping = aes(x = validtime, y = value, 
                                                   color = variable)) + 
-    scale_color_grey(start = 0.7, end = 0.7) +
-    geom_line(aes(y = med.raw), color = 'red', size = 2) + 
-    geom_line(aes(y = avg.raw), color = 'blue', size = 2) + 
+    # scale_color_grey(start = 0.7, end = 0.7, guide = 'none') +
+    geom_line(aes(y = gec00.raw, color = 'Ensemble Members')) + 
+    geom_line(aes(y = med.raw, color = 'Ensemble Median'), size = 1.5) + 
+    geom_line(aes(y = avg.raw, color = 'Ensemble Mean'), size = 1.5) + 
     geom_line(aes(y = max.raw)) + geom_line(aes(y = min.raw)) + 
-    geom_ribbon(aes(ymin = min.raw, ymax = max.raw), alpha = 0.25) + 
+    geom_ribbon(aes(ymin = min.raw, ymax = max.raw, fill = 'Ensemble Spread'), 
+                alpha = 0.25) + 
+    scale_color_manual(breaks = c('Ensemble Median', 'Ensemble Mean', 
+                                  'Ensemble Members'), 
+                       values = c('red', 'blue', 'grey', rep('grey', 21))) +
+    scale_fill_manual(breaks = c('Ensemble Spread'), 
+                      values = c('black')) +
     geom_hline(aes(yintercept = 0), linetype = 'dashed') + theme_light() + 
-    xlab('') + ylab('IRL Setup (cm)') + theme(legend.position="none")
+    xlab('') + ylab('IRL Setup (cm)') + 
+    theme(legend.position="bottom", legend.title = element_blank())
 print(p)
+ggsave('docs/img/raw_setup.png', width = 8, height = 6, units = 'in', dpi = 150)
