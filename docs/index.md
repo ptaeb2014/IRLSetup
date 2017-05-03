@@ -1,9 +1,9 @@
 Current Forecast
 ----------------
 
-![](/Users/bph/Dropbox/IRLSetup/docs/index_files/figure-markdown_strict/current%20forecast-1.png)
+![](img/raw_setup.png)
 
-> Valid 2017-05-03 10:57:22.
+> Forecast valid 2017-05-03 11:06:25.
 
 About
 -----

@@ -17,7 +17,7 @@ library(lubridate) # awesome date/time functions
 
 ## Current Forecast
 
-```{r current forecast, echo=FALSE}
+```{r current_forecast, echo=FALSE, include=FALSE}
 load('~/Dropbox/IRLSetup/data/df_setup.RData')
 df.test <- df.setup[4:28,]
 df.setup.melt <- melt(df.test, id.vars = 'validtime')
@@ -43,9 +43,11 @@ ggplot(df.test, aes(x = validtime)) +
     geom_hline(aes(yintercept = 0), linetype = 'dashed') + theme_light() + 
     xlab('') + ylab('IRL Setup (cm)') + 
     theme(legend.position="bottom", legend.title = element_blank())
+ggsave('~/Dropbox/IRLSetup/docs/img/raw_setup.png', width = 8, height = 6, units = 'in', dpi = 150)
 ```
+![](img/raw_setup.png)
 
-> Valid `r Sys.time()`.
+> Forecast valid `r Sys.time()`.
 
 ## About
 The above image shows an ensemble-based statistical forecast of water elevation difference between two sites in the [Indian River Lagoon (IRL)](https://en.wikipedia.org/wiki/Indian_River_Lagoon). Model data are provided by the [Global Ensemble Forecast System (GEFS)](https://www.ncdc.noaa.gov/data-access/model-data/model-datasets/global-ensemble-forecast-system-gefs) and are verified with wind observations from [Orlando Melbourne International Airport (KMLB)](https://en.wikipedia.org/wiki/Orlando_Melbourne_International_Airport). The statistical model is calibrated to over fifty significant setup events during the winters of 2015/2016 and 2016/2017 (see [Colvin et al. 2017]()).
@@ -59,8 +61,3 @@ Coming soon ...
 ## Archive
 
 Coming soon ...
-
-``` {r knit file, echo = FALSE}
-#library(rmarkdown)
-#rmarkdown::render('R/index.Rmd', output_dir = '~/Dropbox/IRLSetup/docs/')
-```
