@@ -3,7 +3,7 @@ Current Forecast
 
 ![](img/raw_setup.png)
 
-> Forecast valid 2017-05-03 11:06:25.
+> Forecast valid 2017-05-03 11:54:28.
 
 About
 -----

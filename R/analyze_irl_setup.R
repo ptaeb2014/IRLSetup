@@ -1,3 +1,8 @@
+# analyze_irl_setup.R
+# Bryan Holman // v0.2 // 20170503
+
+# This is the testbed for creating the perfect ggplot to go on the site!
+
 library(reshape2)
 library(ggplot2)
 
@@ -6,7 +11,7 @@ library(ggplot2)
 # # the code below does okay ... not awesome ... too many lines!
 # p <- ggplot(df.setup.melt, aes(x = validtime, y = value, color = variable)) + 
 #     geom_line() + theme_minimal() + theme(legend.position="bottom")
-
+load('~/Dropbox/IRLSetup/data/df_setup.RData')
 df.test <- df.setup[4:28,]
 df.setup.melt <- melt(df.test, id.vars = 'validtime')
 df.test$avg.raw <- rowMeans(df.test[-1], na.rm = FALSE)
@@ -30,6 +35,8 @@ p <- ggplot(df.test, aes(x = validtime)) +
                       values = c('black')) +
     geom_hline(aes(yintercept = 0), linetype = 'dashed') + theme_light() + 
     xlab('') + ylab('IRL Setup (cm)') + 
+    scale_x_datetime(breaks = df.test$validtime[seq(4, 28, by = 4)], 
+                     date_labels = '%b %d\n %H UTC', 
+                     limits = c(df.test$validtime[1], NA)) +
     theme(legend.position="bottom", legend.title = element_blank())
 print(p)
-# ggsave('docs/img/raw_setup.png', width = 8, height = 6, units = 'in', dpi = 150)

@@ -42,6 +42,9 @@ ggplot(df.test, aes(x = validtime)) +
                       values = c('black')) +
     geom_hline(aes(yintercept = 0), linetype = 'dashed') + theme_light() + 
     xlab('') + ylab('IRL Setup (cm)') + 
+    scale_x_datetime(breaks = df.test$validtime[seq(4, 28, by = 4)], 
+                     date_labels = '%b %d\n %H UTC', 
+                     limits = c(df.test$validtime[1], NA)) +
     theme(legend.position="bottom", legend.title = element_blank())
 ggsave('~/Dropbox/IRLSetup/docs/img/raw_setup.png', width = 8, height = 6, units = 'in', dpi = 150)
 ```
