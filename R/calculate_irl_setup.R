@@ -11,6 +11,7 @@
 # libraries ---------------------------------------------------------------
 
 library(lubridate) # nice date handling
+library(rmarkdown) # rendering index.Rmd at the end
 
 # functions ---------------------------------------------------------------
 
@@ -125,6 +126,7 @@ for (ens.mem in ens.mems) {
         abs(u.r)^1.5 - 3
 }
 save(df.setup, file = 'data/df_setup.RData')
+rmarkdown::render('R/index.Rmd', output_dir = '~/Dropbox/IRLSetup/docs/')
 # save df.run to disk
 # write.csv(df.run, file = paste(data.path, '/', 'gefs_', date, '.csv', sep = ''), 
 #           row.names = FALSE)
