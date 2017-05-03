@@ -124,7 +124,7 @@ for (ens.mem in ens.mems) {
     df.setup[[paste(ens.mem, 'raw', sep = '.')]] <- 0.728 * sign(u.r) * 
         abs(u.r)^1.5 - 3
 }
-
+save(df.setup, file = 'data/df_setup.RData')
 # save df.run to disk
 # write.csv(df.run, file = paste(data.path, '/', 'gefs_', date, '.csv', sep = ''), 
 #           row.names = FALSE)

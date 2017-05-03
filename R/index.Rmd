@@ -1,0 +1,66 @@
+---
+output:
+  md_document:
+    fig_height: 6
+    fig_width: 8
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r load packages, echo = FALSE, results = 'asis', warning=FALSE, message=FALSE}
+library(ggplot2) # data visualization
+library(reshape2) # melting dataframes
+library(lubridate) # awesome date/time functions
+```
+
+## Current Forecast
+
+```{r current forecast, echo=FALSE}
+load('~/Dropbox/IRLSetup/data/df_setup.RData')
+df.test <- df.setup[4:28,]
+df.setup.melt <- melt(df.test, id.vars = 'validtime')
+df.test$avg.raw <- rowMeans(df.test[-1], na.rm = FALSE)
+df.test$min.raw <- apply(df.test[-c(1, 23)], 1, min)
+df.test$max.raw <- apply(df.test[-c(1, 23)], 1, max)
+df.test$med.raw <- apply(df.test[-c(1, 23)], 1, median)
+ggplot(df.test, aes(x = validtime)) + 
+    geom_line(data = df.setup.melt, mapping = aes(x = validtime, y = value, 
+                                                  color = variable)) + 
+    # scale_color_grey(start = 0.7, end = 0.7, guide = 'none') +
+    geom_line(aes(y = gec00.raw, color = 'Ensemble Members')) + 
+    geom_line(aes(y = med.raw, color = 'Ensemble Median'), size = 1.5) + 
+    geom_line(aes(y = avg.raw, color = 'Ensemble Mean'), size = 1.5) + 
+    geom_line(aes(y = max.raw)) + geom_line(aes(y = min.raw)) + 
+    geom_ribbon(aes(ymin = min.raw, ymax = max.raw, fill = 'Ensemble Spread'), 
+                alpha = 0.25) + 
+    scale_color_manual(breaks = c('Ensemble Median', 'Ensemble Mean', 
+                                  'Ensemble Members'), 
+                       values = c('red', 'blue', 'grey', rep('grey', 21))) +
+    scale_fill_manual(breaks = c('Ensemble Spread'), 
+                      values = c('black')) +
+    geom_hline(aes(yintercept = 0), linetype = 'dashed') + theme_light() + 
+    xlab('') + ylab('IRL Setup (cm)') + 
+    theme(legend.position="bottom", legend.title = element_blank())
+```
+
+> Valid `r Sys.time()`.
+
+## About
+The above image shows an ensemble-based statistical forecast of water elevation difference between two sites in the [Indian River Lagoon (IRL)](https://en.wikipedia.org/wiki/Indian_River_Lagoon). Model data are provided by the [Global Ensemble Forecast System (GEFS)](https://www.ncdc.noaa.gov/data-access/model-data/model-datasets/global-ensemble-forecast-system-gefs) and are verified with wind observations from [Orlando Melbourne International Airport (KMLB)](https://en.wikipedia.org/wiki/Orlando_Melbourne_International_Airport). The statistical model is calibrated to over fifty significant setup events during the winters of 2015/2016 and 2016/2017 (see [Colvin et al. 2017]()).
+
+Click [here](irl.html) to learn more about IRL research.
+
+## Methods
+
+Coming soon ...
+
+## Archive
+
+Coming soon ...
+
+``` {r knit file, echo = FALSE}
+#library(rmarkdown)
+#rmarkdown::render('R/index.Rmd', output_dir = '~/Dropbox/IRLSetup/docs/')
+```

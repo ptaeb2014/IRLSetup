@@ -32,4 +32,4 @@ p <- ggplot(df.test, aes(x = validtime)) +
     xlab('') + ylab('IRL Setup (cm)') + 
     theme(legend.position="bottom", legend.title = element_blank())
 print(p)
-ggsave('docs/img/raw_setup.png', width = 8, height = 6, units = 'in', dpi = 150)
+# ggsave('docs/img/raw_setup.png', width = 8, height = 6, units = 'in', dpi = 150)
