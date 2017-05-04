@@ -28,7 +28,6 @@ df.test$med.raw <- apply(df.test[-c(1, 23)], 1, median)
 ggplot(df.test, aes(x = validtime)) + 
     geom_line(data = df.setup.melt, mapping = aes(x = validtime, y = value, 
                                                   color = variable)) + 
-    # scale_color_grey(start = 0.7, end = 0.7, guide = 'none') +
     geom_line(aes(y = gec00.raw, color = 'Ensemble Members')) + 
     geom_line(aes(y = med.raw, color = 'Ensemble Median'), size = 1.5) + 
     geom_line(aes(y = avg.raw, color = 'Ensemble Mean'), size = 1.5) + 

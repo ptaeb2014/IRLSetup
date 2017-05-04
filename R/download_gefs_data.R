@@ -10,6 +10,7 @@
 # libraries ---------------------------------------------------------------
 
 library(lubridate) # nice date handling
+library(dplyr) # easy row binding
 
 # functions ---------------------------------------------------------------
 
@@ -110,7 +111,7 @@ ens.mems <- c('gec00', 'gep01', 'gep02', 'gep03', 'gep04', 'gep05', 'gep06',
 
 # date/run to grab data (yesterday, 18z)
 date <- format(Sys.Date() - days(1), '%Y%m%d')
-fcst.time <- as.POSIXct(Sys.Date() - days(1) + hours(18), tz = 'GMT')
+fcst.time <- as.POSIXct(Sys.Date() - days(1) + hours(18), tz = 'UTC')
 run <- '18'
 
 # dataframe to store final information
@@ -175,3 +176,17 @@ for (ens.mem in ens.mems) {
 # save df.run to disk
 write.csv(df.run, file = paste(data.path, '/', 'gefs_', date, '.csv', sep = ''), 
           row.names = FALSE)
+
+# Now open up gefs_all.csv and add df.run to it. Eventually I won't save df.run
+# on its own, but for now I will keep the files to make sure everything is
+# working properly
+df.all <- read.csv(paste(data.path, '/', 'gefs_all.csv', sep = ''), 
+                   header = TRUE, stringsAsFactors = FALSE)
+df.all$runtime <- as.POSIXct(df.all$runtime, tz = 'UTC')
+df.all$validtime <- as.POSIXct(df.all$validtime, tz = 'UTC')
+
+df.all <- bind_rows(df.all, df.run)
+
+write.csv(df.all, file = paste(data.path, '/gefs_all.csv', sep = ''), 
+          row.names = FALSE)
+
