@@ -24,7 +24,7 @@ df.all$runtime <- as.POSIXct(df.all$runtime, tz = 'UTC')
 df.all$validtime <- as.POSIXct(df.all$validtime, tz = 'UTC')
 
 # determine what timeframe we need to look at for KMLB ASOS data
-times.needs.kmlb <- df.all$validtime[anyNA(c(df.all$kmlb.u, df.all$kmlb.v))]
+times.needs.kmlb <- df.all$validtime[is.na(df.all$kmlb.u)]
 
 # get KMLB ASOS data for this time frame
 df.kmlb <- riem_measures(station = "MLB", 
