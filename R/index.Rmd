@@ -45,19 +45,25 @@ date.breaks <- seq.POSIXt(asos.setup$roundvalid[1] - hours(3),
 ggplot(gefs.setup.recent, aes(x = validtime)) + 
     geom_hline(aes(yintercept = 0), linetype = 'dashed') + 
     geom_vline(aes(xintercept = as.numeric(gefs.setup.recent$validtime[1]))) +
-    geom_line(data = gefs.setup.1, aes(y = max), alpha = 0.5) + 
+    geom_line(data = gefs.setup.1, aes(y = max), alpha = 0.5, 
+              linetype = 'dashed') + 
     # geom_line(data = gefs.setup.1, aes(y = avg), alpha = 0.5) + 
-    geom_line(data = gefs.setup.1, aes(y = min), alpha = 0.5) + 
+    geom_line(data = gefs.setup.1, aes(y = min), alpha = 0.5, 
+              linetype = 'dashed') + 
     geom_ribbon(data = gefs.setup.1, aes(ymin = min, ymax = max), 
                 alpha = 0.125) + 
-    geom_line(data = gefs.setup.2, aes(y = max), alpha = 0.5) + 
+    geom_line(data = gefs.setup.2, aes(y = max), alpha = 0.5, 
+              linetype = 'dashed') + 
     # geom_line(data = gefs.setup.2, aes(y = avg), alpha = 0.5) + 
-    geom_line(data = gefs.setup.2, aes(y = min), alpha = 0.5) + 
+    geom_line(data = gefs.setup.2, aes(y = min), alpha = 0.5, 
+              linetype = 'dashed') + 
     geom_ribbon(data = gefs.setup.2, aes(ymin = min, ymax = max), 
                 alpha = 0.125) + 
-    geom_line(data = gefs.setup.3, aes(y = max), alpha = 0.5) + 
+    geom_line(data = gefs.setup.3, aes(y = max), alpha = 0.5, 
+              linetype = 'dashed') +  
     # geom_line(data = gefs.setup.3, aes(y = avg), alpha = 0.5) + 
-    geom_line(data = gefs.setup.3, aes(y = min), alpha = 0.5) + 
+    geom_line(data = gefs.setup.3, aes(y = min), alpha = 0.5, 
+              linetype = 'dashed') + 
     geom_ribbon(data = gefs.setup.3, aes(ymin = min, ymax = max), 
                 alpha = 0.125) + 
     geom_line(data = gefs.setup.recent.melt, 
