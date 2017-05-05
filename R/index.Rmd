@@ -44,8 +44,7 @@ date.breaks <- seq.POSIXt(asos.setup$roundvalid[1] - hours(3),
                           gefs.setup.recent$validtime[24], by = '12 hours')
 ggplot(gefs.setup.recent, aes(x = validtime)) + 
     geom_hline(aes(yintercept = 0), linetype = 'dashed') + 
-    geom_vline(aes(xintercept = as.numeric(gefs.setup.recent$validtime[1])), 
-               linetype = 'dashed') +
+    geom_vline(aes(xintercept = as.numeric(gefs.setup.recent$validtime[1]))) +
     geom_line(data = gefs.setup.1, aes(y = max), alpha = 0.5) + 
     # geom_line(data = gefs.setup.1, aes(y = avg), alpha = 0.5) + 
     geom_line(data = gefs.setup.1, aes(y = min), alpha = 0.5) + 

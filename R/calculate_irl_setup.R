@@ -81,7 +81,7 @@ getSetup <- function(times, us, vs, type = 'model') {
     # now calculate the lagoon relative wind
     u.r <- -1 * (u1 * 28 + u2 * 70) / (28 + 70)
     # u.r <- (u1 * 28 + u2 * 70) / (28 + 70)
-    
+
     # return the setup given u.r
     return(0.728 * sign(u.r) * abs(u.r)^1.5 - 3)
 }
