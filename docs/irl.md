@@ -1,3 +1,8 @@
+---
+layout: default
+title: 'About the IRL'
+---
+
 ## About the IRL
 The IRL is a coastal estuary that separates east-central Florida's barrier islands from the mainland. It is [rich in biodiversity](http://www.sms.si.edu/irlspec/maps.htm) and provides recreation for millions of people each year. The surrounding land represents [billions of dollars of real estate value](http://www.floridatoday.com/story/news/local/environment/lagoon/2016/07/29/why-healthy-lagoon-worth-63-billion-local-economy/87651436/) and is home to campuses of many high-tech enterprises, including NASA's [Kennedy Space Center](https://www.kennedyspacecenter.com/).
 
