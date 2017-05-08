@@ -28,6 +28,7 @@ addEnsStats <- function(df.ens, cols = 2:22) {
 
 ```{r current_forecast, echo=FALSE, include=FALSE}
 load('~/Dropbox/IRLSetup/data/setup.RData')
+current.runcycle <- gefs.setup.recent$validtime[1]
 # remove the missing rows in gefs.setup
 gefs.setup.1 <- gefs.setup.1[4:28,]
 gefs.setup.2 <- gefs.setup.2[4:28,]
@@ -40,58 +41,60 @@ gefs.setup.1 <- addEnsStats(gefs.setup.1)
 gefs.setup.2 <- addEnsStats(gefs.setup.2)
 gefs.setup.3 <- addEnsStats(gefs.setup.3)
 gefs.setup.recent <- addEnsStats(gefs.setup.recent)
-date.breaks <- seq.POSIXt(asos.setup$roundvalid[1] - hours(3), 
+date.breaks <- seq.POSIXt(asos.setup$roundvalid[1] - hours(3),
                           gefs.setup.recent$validtime[24], by = '12 hours')
-ggplot(gefs.setup.recent, aes(x = validtime)) + 
-    geom_hline(aes(yintercept = 0), linetype = 'dashed') + 
+ggplot(gefs.setup.recent, aes(x = validtime)) +
+    geom_hline(aes(yintercept = 0), linetype = 'dashed') +
     geom_vline(aes(xintercept = as.numeric(gefs.setup.recent$validtime[1]))) +
-    geom_line(data = gefs.setup.1, aes(y = max), alpha = 0.5, 
-              linetype = 'dashed') + 
-    # geom_line(data = gefs.setup.1, aes(y = avg), alpha = 0.5) + 
-    geom_line(data = gefs.setup.1, aes(y = min), alpha = 0.5, 
-              linetype = 'dashed') + 
-    geom_ribbon(data = gefs.setup.1, aes(ymin = min, ymax = max), 
-                alpha = 0.125) + 
-    geom_line(data = gefs.setup.2, aes(y = max), alpha = 0.5, 
-              linetype = 'dashed') + 
-    # geom_line(data = gefs.setup.2, aes(y = avg), alpha = 0.5) + 
-    geom_line(data = gefs.setup.2, aes(y = min), alpha = 0.5, 
-              linetype = 'dashed') + 
-    geom_ribbon(data = gefs.setup.2, aes(ymin = min, ymax = max), 
-                alpha = 0.125) + 
-    geom_line(data = gefs.setup.3, aes(y = max), alpha = 0.5, 
+    geom_line(data = gefs.setup.1, aes(y = max), alpha = 0.5,
+              linetype = 'dashed') +
+    # geom_line(data = gefs.setup.1, aes(y = avg), alpha = 0.5) +
+    geom_line(data = gefs.setup.1, aes(y = min), alpha = 0.5,
+              linetype = 'dashed') +
+    geom_ribbon(data = gefs.setup.1, aes(ymin = min, ymax = max),
+                alpha = 0.125) +
+    geom_line(data = gefs.setup.2, aes(y = max), alpha = 0.5,
+              linetype = 'dashed') +
+    # geom_line(data = gefs.setup.2, aes(y = avg), alpha = 0.5) +
+    geom_line(data = gefs.setup.2, aes(y = min), alpha = 0.5,
+              linetype = 'dashed') +
+    geom_ribbon(data = gefs.setup.2, aes(ymin = min, ymax = max),
+                alpha = 0.125) +
+    geom_line(data = gefs.setup.3, aes(y = max), alpha = 0.5,
               linetype = 'dashed') +  
-    # geom_line(data = gefs.setup.3, aes(y = avg), alpha = 0.5) + 
-    geom_line(data = gefs.setup.3, aes(y = min), alpha = 0.5, 
-              linetype = 'dashed') + 
-    geom_ribbon(data = gefs.setup.3, aes(ymin = min, ymax = max), 
-                alpha = 0.125) + 
-    geom_line(data = gefs.setup.recent.melt, 
-              mapping = aes(x = validtime, y = value, color = variable)) + 
-    geom_line(aes(y = gec00.raw, color = 'Ensemble Members')) + 
-    geom_line(aes(y = med, color = 'Ensemble Median'), size = 1.5) + 
-    geom_line(aes(y = avg, color = 'Ensemble Mean'), size = 1.5) + 
-    geom_line(aes(y = max)) + geom_line(aes(y = min)) + 
-    geom_ribbon(aes(ymin = min, ymax = max, fill = 'Ensemble Spread'), 
-                alpha = 0.25) + 
-    geom_point(data = asos.setup, mapping = aes(x = roundvalid, y = setup), 
+    # geom_line(data = gefs.setup.3, aes(y = avg), alpha = 0.5) +
+    geom_line(data = gefs.setup.3, aes(y = min), alpha = 0.5,
+              linetype = 'dashed') +
+    geom_ribbon(data = gefs.setup.3, aes(ymin = min, ymax = max),
+                alpha = 0.125) +
+    geom_line(data = gefs.setup.recent.melt,
+              mapping = aes(x = validtime, y = value, color = variable)) +
+    geom_line(aes(y = gec00.raw, color = 'Ensemble Members')) +
+    geom_line(aes(y = med, color = 'Ensemble Median'), size = 1.5) +
+    geom_line(aes(y = avg, color = 'Ensemble Mean'), size = 1.5) +
+    geom_line(aes(y = max)) + geom_line(aes(y = min)) +
+    geom_ribbon(aes(ymin = min, ymax = max, fill = 'Ensemble Spread'),
+                alpha = 0.25) +
+    geom_point(data = asos.setup, mapping = aes(x = roundvalid, y = setup),
               size = 3, fill = 'orange', shape = 21) +
-    scale_color_manual(breaks = c('Ensemble Median', 'Ensemble Mean', 
-                                  'Ensemble Members'), 
+    scale_color_manual(breaks = c('Ensemble Median', 'Ensemble Mean',
+                                  'Ensemble Members'),
                        values = c('red', 'blue', 'grey', rep('grey', 21))) +
-    scale_fill_manual(breaks = c('Ensemble Spread'), 
+    scale_fill_manual(breaks = c('Ensemble Spread'),
                       values = c('black')) +
-    theme_light() + xlab('') + ylab('IRL Setup (cm)') + 
+    theme_light() + xlab('') + ylab('IRL Setup (cm)') +
     scale_x_datetime(breaks = date.breaks,
                      date_labels = '%b %d\n %H UTC',
                      limits = c(date.breaks[1], NA)) +
     theme(legend.position="bottom", legend.title = element_blank())
-ggsave('~/Dropbox/IRLSetup/docs/img/raw_setup.png', width = 8, height = 6, 
+ggsave('~/Dropbox/IRLSetup/docs/img/raw_setup.png', width = 8, height = 6,
        units = 'in', dpi = 150)
 ```
 ![](img/raw_setup.png)
 
 > Forecast valid `r Sys.time()`.
+
+The image above has a lot going on, and the legend is incomplete, so let's explain the figure. First, the y-axis shows IRL wind setup between Titusville and Sebastian, in cm. Positive setup indicates increased water elevation in the northern IRL (near Titusville), and negative setup indicates the increase elevation in the southern IRL (near Sebastian). The x-axis displays the date and time in UTC. The solid vertical line represents the beginning of the most recent ensemble forecast (currently `r current.runcycle`). For this most recent forecast, the ensemble spread (grey shading) is bound by solid black lines, with individual members represented by faint grey lines. The ensemble mean and median for this are represented by the red and blue curves, respectively. Also shown are the ensemble spreads from previous forecasts (grey shading bounded by dashed grey lines). Finally, real time observations of wind setup do not exist, but ongoing research by Colvin et al. (2017, in preparation) calibrates observed wind setup with wind observations at Melbourne Airport (KMLB). The orange points represent this parameterized setup given recent KMLB observations, and in a sense provide quasi-verification to recent forecasts.
 
 ## About
 The above image shows an ensemble-based statistical forecast of water elevation difference between two sites in the [Indian River Lagoon (IRL)](https://en.wikipedia.org/wiki/Indian_River_Lagoon). Model data are provided by the [Global Ensemble Forecast System (GEFS)](https://www.ncdc.noaa.gov/data-access/model-data/model-datasets/global-ensemble-forecast-system-gefs) and are verified with wind observations from [Orlando Melbourne International Airport (KMLB)](https://en.wikipedia.org/wiki/Orlando_Melbourne_International_Airport). The statistical model is calibrated to over fifty significant setup events during the winters of 2015/2016 and 2016/2017 (see [Colvin et al. 2017]()).
