@@ -2,8 +2,12 @@ Current Forecast
 ----------------
 
 ![](img/raw_setup.png)
+[![](img/raw_setup.png)](https://bhlmn.github.io/IRLSetup/img/raw_setup.png)
 
-> Forecast valid 2017-05-08 11:44:27.
+> Forecast valid 2017-05-08 13:04:25.
+
+Explanation
+-----------
 
 The image above has a lot going on, and the legend is incomplete, so
 let's explain the figure. First, the y-axis shows IRL wind setup between
