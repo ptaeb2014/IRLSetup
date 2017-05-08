@@ -91,8 +91,11 @@ ggsave('~/Dropbox/IRLSetup/docs/img/raw_setup.png', width = 8, height = 6,
        units = 'in', dpi = 150)
 ```
 ![](img/raw_setup.png)
+[![Current Forecast](img/raw_setup.png)](https://bhlmn.github.io/IRLSetup/img/raw_setup.png)
 
 > Forecast valid `r Sys.time()`.
+
+## Explanation
 
 The image above has a lot going on, and the legend is incomplete, so let's explain the figure. First, the y-axis shows IRL wind setup between Titusville and Sebastian, in cm. Positive setup indicates increased water elevation in the northern IRL (near Titusville), and negative setup indicates the increase elevation in the southern IRL (near Sebastian). The x-axis displays the date and time in UTC. The solid vertical line represents the beginning of the most recent ensemble forecast (currently `r current.runcycle`). For this most recent forecast, the ensemble spread (grey shading) is bound by solid black lines, with individual members represented by faint grey lines. The ensemble mean and median for this are represented by the red and blue curves, respectively. Also shown are the ensemble spreads from previous forecasts (grey shading bounded by dashed grey lines). Finally, real time observations of wind setup do not exist, but ongoing research by Colvin et al. (2017, in preparation) calibrates observed wind setup with wind observations at Melbourne Airport (KMLB). The orange points represent this parameterized setup given recent KMLB observations, and in a sense provide quasi-verification to recent forecasts.
 
