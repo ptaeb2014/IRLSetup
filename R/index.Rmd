@@ -90,7 +90,7 @@ ggplot(gefs.setup.recent, aes(x = validtime)) +
 ggsave('~/Dropbox/IRLSetup/docs/img/raw_setup.png', width = 8, height = 6,
        units = 'in', dpi = 150)
 ```
-![](img/raw_setup.png)
+
 [![](img/raw_setup.png)](https://bhlmn.github.io/IRLSetup/img/raw_setup.png)
 
 > Forecast valid `r Sys.time()`.
