@@ -3,7 +3,7 @@ Current Forecast
 
 [![](img/raw_setup.png)](https://bhlmn.github.io/IRLSetup/img/raw_setup.png)
 
-> Forecast valid 2017-05-10 09:29:14.
+> Forecast valid 2017-05-11 07:10:48.
 
 Explanation
 -----------
@@ -15,7 +15,7 @@ water elevation in the northern IRL (near Titusville), and negative
 setup indicates the increase elevation in the southern IRL (near
 Sebastian). The x-axis displays the date and time in UTC. The solid
 vertical line represents the beginning of the most recent ensemble
-forecast (currently 2017-05-09 18:00:00). For this most recent forecast,
+forecast (currently 2017-05-10 18:00:00). For this most recent forecast,
 the ensemble spread (grey shading) is bound by solid black lines, with
 individual members represented by faint grey lines. The ensemble mean
 and median for this are represented by the red and blue curves,
