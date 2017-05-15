@@ -83,7 +83,7 @@ getSetup <- function(times, us, vs, type = 'model') {
     # u.r <- (u1 * 28 + u2 * 70) / (28 + 70)
 
     # return the setup given u.r
-    return(0.728 * sign(u.r) * abs(u.r)^1.5)
+    return(1.637 * sign(u.r) * abs(u.r)^1.5 - .109)
 }
 
 # global variables --------------------------------------------------------
