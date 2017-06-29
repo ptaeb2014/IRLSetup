@@ -3,7 +3,7 @@ Current Forecast
 
 [![](img/raw_setup.png)](https://bhlmn.github.io/IRLSetup/img/raw_setup.png)
 
-> Forecast valid 2017-06-29 06:56:58.
+> Forecast valid 2017-06-29 11:25:51.
 
 Explanation
 -----------
@@ -17,7 +17,7 @@ star), and Sebastian, FL (white star). In general, southerly (northerly)
 winds result in increased water elevation near Titusville (Sebastian)
 and positive (negative) setup.
 
-The current (18 UTC 2017-06-27) 0.5° [Global Ensemble Forecast System
+The current (18 UTC 2017-06-28) 0.5° [Global Ensemble Forecast System
 (GEFS)](https://www.ncdc.noaa.gov/data-access/model-data/model-datasets/global-ensemble-forecast-system-gefs)
 mean and median forecasts of setup are represented by the red and blue
 curves, respectively. Ensemble spread from the current and three
