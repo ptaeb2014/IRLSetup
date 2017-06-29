@@ -97,17 +97,16 @@ ggsave('~/Dropbox/IRLSetup/docs/img/raw_setup.png', width = 8, height = 6,
 
 ## Explanation
 
-The image above has a lot going on, and the legend is incomplete, so let's explain the figure. First, the y-axis shows IRL wind setup between Titusville and Sebastian, in cm. Positive setup indicates increased water elevation in the northern IRL (near Titusville), and negative setup indicates the increase elevation in the southern IRL (near Sebastian). The x-axis displays the date and time in UTC. The solid vertical line represents the beginning of the most recent ensemble forecast (currently `r current.runcycle`). For this most recent forecast, the ensemble spread (grey shading) is bound by solid black lines, with individual members represented by faint grey lines. The ensemble mean and median for this are represented by the red and blue curves, respectively. Also shown are the ensemble spreads from previous forecasts (grey shading bounded by dashed grey lines). Finally, real time observations of wind setup do not exist, but ongoing research by Colvin et al. (2017, in preparation) calibrates observed wind setup with wind observations at Melbourne Airport (KMLB). The orange points represent this parameterized setup given recent KMLB observations, and in a sense provide quasi-verification to recent forecasts.
+<img align="left" src="img/sensor_locations.png">
 
-## About
-The above image shows an ensemble-based statistical forecast of water elevation difference between two sites in the [Indian River Lagoon (IRL)](https://en.wikipedia.org/wiki/Indian_River_Lagoon). Model data are provided by the [Global Ensemble Forecast System (GEFS)](https://www.ncdc.noaa.gov/data-access/model-data/model-datasets/global-ensemble-forecast-system-gefs) and are verified with wind observations from [Orlando Melbourne International Airport (KMLB)](https://en.wikipedia.org/wiki/Orlando_Melbourne_International_Airport). The statistical model is calibrated to over fifty significant setup events during the winters of 2015/2016 and 2016/2017 (see [Colvin et al. 2017]()).
+The above image shows the ensemble forecast of [Indian River Lagoon (IRL)](https://en.wikipedia.org/wiki/Indian_River_Lagoon) setup, defined as the difference in water elevation between Titusville, FL (orange star), and Sebastian, FL (white star). In general, southerly (northerly) winds result in increased water elevation near Titusville (Sebastian) and positive (negative) setup.
+
+The current (18 UTC `r as.Date(current.runcycle)`) 0.5° [Global Ensemble Forecast System (GEFS)](https://www.ncdc.noaa.gov/data-access/model-data/model-datasets/global-ensemble-forecast-system-gefs) mean and median forecasts of setup are represented by the red and blue curves, respectively. Ensemble spread from the current and three previous GEFS runs are shaded grey and bounded by solid and dashed curves, respectively.
+
+Because real time observations of IRL setup do not exist, for verification purposes hourly estimates are provided (orange points) using wind observations from [Orlando Melbourne International Airport (KMLB)](https://en.wikipedia.org/wiki/Orlando_Melbourne_International_Airport) following Colvin et al. (2017).
 
 Click [here](irl.html) to learn more about IRL research.
 
-## Methods
+# Reference
 
-Coming soon ...
-
-## Archive
-
-Coming soon ...
+Colvin, J, S. Lazarus, M. Splitt, and R. Weaver, 2017: In preparation.
